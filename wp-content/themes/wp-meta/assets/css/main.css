@@ -1,0 +1,52 @@
+/* ==========================================
+	Global
+========================================== */
+html,
+body {
+	
+}
+
+h1,
+h2,
+h3,
+h4 {
+	
+}
+
+a {
+	
+}
+
+a:hover,
+a:focus,
+a:active {
+	
+}
+
+.right {
+	text-align: right;
+}
+
+.left {
+	text-align: left;
+}
+
+.center {
+	text-align: center;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.uppercase {
+	text-transform: uppercase;
+}
+
+.lowercase {
+	text-transform: lowercase;
+}
+
+/* ==========================================
+	Next section...
+========================================== */
