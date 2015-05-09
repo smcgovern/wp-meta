@@ -1,11 +1,12 @@
 @layout('master')
+<?php /* Template Name: Home */ ?>
 
 @section('content')
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		@wpposts
+	@wpposts
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<a href="{{ the_permalink() }}">{{ the_title() }}</a><br>
-		@wpempty
-			<p>404</p>
-		@wpend
-	</div><!-- ./col-lg-12 -->
+		</div><!-- ./col-lg-12 -->
+	@wpempty
+		<p>404</p>
+	@wpend
 @endsection
