@@ -56,6 +56,16 @@ if(function_exists('register_field_group'))
 				'formatting' => 'html',
 				'maxlength' => '',
 			),
+			array (
+				'key' => 'field_554e6c718d0c7',
+				'label' => 'Image',
+				'name' => 'seo_image',
+				'type' => 'image',
+				'instructions' => 'Note: Preview image used by social networks, if left empty they normally pick the first image on the page.',
+				'save_format' => 'url',
+				'preview_size' => 'thumbnail',
+				'library' => 'all',
+			),
 		),
 		'location' => array (
 			array (

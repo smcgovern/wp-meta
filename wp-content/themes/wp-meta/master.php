@@ -13,7 +13,9 @@
 	@endif
 	<meta property="og:site_name" content="{{ get_bloginfo('name') }}">
 	<meta property="og:url" content="{{ $_SERVER['PHP_SELF'] }}">
-	<meta property="og:image" content="">
+	@if (get_field('seo_image'))
+		<meta property="og:image" content="seo_image">
+	@endif
 	@if (get_field('seo_description'))
 		<meta name="description" content="{{ get_field('seo_description') }}">
 		<meta property="og:description" content="{{ get_field('seo_description') }}" />
@@ -99,7 +101,7 @@
 			</div><!-- #/footer-inner -->
 			
 		</div><!-- ./row -->
-	</div><!-- #/content-wrapper -->
+	</div><!-- #/footer-wrapper -->
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="{{ get_template_directory_uri() }}/assets/js/bootstrap.min.js"></script>
