@@ -4,7 +4,25 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>{{ get_bloginfo('name') }}</title>
+	@if (get_field('seo_title'))
+		<title>{{ get_field('seo_title') }} | {{ get_bloginfo('name') }}</title>
+		<meta property="og:title" content="{{ get_field('seo_title') }} | {{ get_bloginfo('name') }}">
+	@else
+		<title>{{ the_title() }} | {{ get_bloginfo('name') }}</title>
+		<meta property="og:title" content="{{ the_title() }} | {{ get_bloginfo('name') }}">
+	@endif
+	<meta property="og:site_name" content="{{ get_bloginfo('name') }}">
+	<meta property="og:url" content="{{ $_SERVER['PHP_SELF'] }}">
+	@if (get_field('seo_image'))
+		<meta property="og:image" content="seo_image">
+	@endif
+	@if (get_field('seo_description'))
+		<meta name="description" content="{{ get_field('seo_description') }}">
+		<meta property="og:description" content="{{ get_field('seo_description') }}" />
+	@endif
+	@if (get_field('seo_keywords'))
+		<meta name="keywords" content="{{ get_field('seo_keywords') }}" />
+	@endif
 
 	<link href="{{ get_template_directory_uri() }}/assets/css/bootstrap.min.css" rel="stylesheet">
 	<link href="{{ get_template_directory_uri() }}/assets/css/main.css" rel="stylesheet">
@@ -21,36 +39,34 @@
 			
 			<div class="container" id="nav-inner">
 				<div class="row">
-					
-					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="nav-wrapper">
-						<nav class="navbar navbar-default">
-							<div class="container-fluid">
-								<div class="navbar-header">
-									<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
-										<span class="sr-only">Toggle navigation</span>
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-										<span class="icon-bar"></span>
-									</button>
-									<a class="navbar-brand" href="{{ site_url() }}">{{ get_bloginfo('name') }}</a>
-								</div><!-- ./navbar-header -->
-								<?php
-								wp_nav_menu( array(
-									'menu' => 'header-menu',
-									'theme_location' => 'header-menu',
-									'depth' => 2,
-									'container' => 'div',
-									'container_class' => 'collapse navbar-collapse',
-									'container_id' => 'main-nav',
-									'menu_class' => 'nav navbar-nav',
-									'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
-									'walker' => new wp_bootstrap_navwalker())
-								)
-								?>
-							</div><!-- /.container-fluid -->
-						</nav>
-					</div><!-- #/nav-wrapper -->
-					
+				
+					<nav class="navbar navbar-default" id="nav-wrapper">
+						<div class="container-fluid">
+							<div class="navbar-header">
+								<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+									<span class="sr-only">Toggle navigation</span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+									<span class="icon-bar"></span>
+								</button>
+								<a class="navbar-brand" href="{{ site_url() }}">{{ get_bloginfo('name') }}</a>
+							</div><!-- ./navbar-header -->
+							<?php
+							wp_nav_menu( array(
+								'menu' => 'header-menu',
+								'theme_location' => 'header-menu',
+								'depth' => 2,
+								'container' => 'div',
+								'container_class' => 'collapse navbar-collapse',
+								'container_id' => 'main-nav',
+								'menu_class' => 'nav navbar-nav',
+								'fallback_cb' => 'wp_bootstrap_navwalker::fallback',
+								'walker' => new wp_bootstrap_navwalker())
+							)
+							?>
+						</div><!-- /.container-fluid -->
+					</nav>
+				
 				</div><!-- ./row -->
 			</div><!-- ./container -->
 			
@@ -85,7 +101,7 @@
 			</div><!-- #/footer-inner -->
 			
 		</div><!-- ./row -->
-	</div><!-- #/content-wrapper -->
+	</div><!-- #/footer-wrapper -->
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="{{ get_template_directory_uri() }}/assets/js/bootstrap.min.js"></script>
