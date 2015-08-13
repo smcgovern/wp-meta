@@ -12,7 +12,7 @@
 		<meta property="og:title" content="{{ the_title() }} | {{ get_bloginfo('name') }}">
 	@endif
 	<meta property="og:site_name" content="{{ get_bloginfo('name') }}">
-	<meta property="og:url" content="{{ $_SERVER['PHP_SELF'] }}">
+	<meta property="og:url" content="http://{{ $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] }}">
 	@if (get_field('seo_image'))
 		<meta property="og:image" content="seo_image">
 	@endif
@@ -31,8 +31,10 @@
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<![endif]-->
+	
+	{{ wp_head() }}
 </head>
-<body>
+<body class="<?php if (is_admin_bar_showing()) echo 'admin'; ?>">
 	
 	<div class="container-fluid" id="header-wrapper">
 		<div class="row">
@@ -106,5 +108,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="{{ get_template_directory_uri() }}/assets/js/bootstrap.min.js"></script>
 	<script src="{{ get_template_directory_uri() }}/assets/js/main.js"></script>
+	
+	{{ wp_footer() }}
 </body>
 </html>
